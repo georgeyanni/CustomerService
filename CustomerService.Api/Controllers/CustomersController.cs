@@ -29,7 +29,7 @@ namespace CustomerService.Api.Controllers
                 var customer = Mapping.Mapper.Map<Customer>(customerDto);
                 await _customerRepo.AddAsync(customer);
                 await _customerRepo.SaveChangesAsync();
-                return Ok();
+                return Ok(customer);
 
             }
             catch (Exception ex)
@@ -57,7 +57,7 @@ namespace CustomerService.Api.Controllers
                 updatedCustomer.ModifiedAt = DateTime.UtcNow;
                 _customerRepo.Update(updatedCustomer);
                 await _customerRepo.SaveChangesAsync();
-                return Ok();
+                return Ok(updatedCustomer);
             }
             catch (Exception ex)
             {
